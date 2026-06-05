@@ -25,7 +25,120 @@
     font-weight: 300;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    padding-top: 64px;
   }
+
+  /* ── HEADER / NAV ── */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    height: 64px;
+    background: rgba(15,17,23,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,146,42,0.18);
+  }
+
+  .header-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .header-logo span { color: var(--gold-light); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* Hire Me dropdown */
+  .hire-me-wrap {
+    position: relative;
+  }
+
+  .nav-cta {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border: 1px solid rgba(200,146,42,0.5);
+    padding: 7px 18px;
+    border-radius: 2px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  .hire-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--ink);
+    border: 1px solid rgba(200,146,42,0.3);
+    border-radius: 4px;
+    min-width: 180px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 200;
+  }
+  .hire-dropdown.open { display: block; }
+
+  .hire-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: background 0.18s, color 0.18s;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .hire-option:last-child { border-bottom: none; }
+  .hire-option:hover {
+    background: rgba(200,146,42,0.15);
+    color: var(--gold-light);
+  }
+  .hire-option svg { flex-shrink: 0; opacity: 0.8; }
 
   /* ── HERO ── */
   .hero {
@@ -49,10 +162,8 @@
   .hero-left::after {
     content: '';
     position: absolute;
-    right: -40px;
-    top: 0;
-    width: 80px;
-    height: 100%;
+    right: -40px; top: 0;
+    width: 80px; height: 100%;
     background: var(--ink);
     clip-path: polygon(0 0, 0 100%, 100% 100%);
     z-index: 3;
@@ -76,11 +187,7 @@
     color: var(--white);
     margin-bottom: 24px;
   }
-
-  .hero-name span {
-    display: block;
-    color: var(--gold-light);
-  }
+  .hero-name span { display: block; color: var(--gold-light); }
 
   .hero-title {
     font-size: 15px;
@@ -92,12 +199,7 @@
     line-height: 1.6;
   }
 
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 48px;
-  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px; }
 
   .tag {
     background: rgba(200,146,42,0.15);
@@ -111,12 +213,7 @@
     border-radius: 2px;
   }
 
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
+  .contact-links { display: flex; flex-direction: column; gap: 10px; }
   .contact-links a {
     color: rgba(255,255,255,0.45);
     text-decoration: none;
@@ -127,7 +224,6 @@
   }
   .contact-links a:hover { color: var(--gold-light); }
 
-  /* right panel */
   .hero-right {
     background: var(--cream);
     padding: 80px 60px 80px 100px;
@@ -162,11 +258,7 @@
     line-height: 1.85;
     margin-bottom: 18px;
   }
-
-  .intro-text strong {
-    font-weight: 500;
-    color: var(--ink);
-  }
+  .intro-text strong { font-weight: 500; color: var(--ink); }
 
   .stat-row {
     display: grid;
@@ -177,11 +269,7 @@
     margin-top: 40px;
   }
 
-  .stat {
-    background: var(--cream);
-    padding: 24px 20px;
-    text-align: center;
-  }
+  .stat { background: var(--cream); padding: 24px 20px; text-align: center; }
 
   .stat-num {
     font-family: 'Playfair Display', serif;
@@ -223,23 +311,13 @@
     color: var(--ink);
   }
 
-  .rule-line {
-    height: 1px;
-    background: var(--rule);
-  }
+  .rule-line { height: 1px; background: var(--rule); }
 
-  /* Timeline */
-  .timeline {
-    position: relative;
-    padding-left: 32px;
-  }
-
+  .timeline { position: relative; padding-left: 32px; }
   .timeline::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 8px;
-    bottom: 0;
+    left: 0; top: 8px; bottom: 0;
     width: 1px;
     background: linear-gradient(to bottom, var(--gold), transparent);
   }
@@ -251,21 +329,16 @@
     transform: translateY(20px);
     animation: fadeUp 0.6s ease forwards;
   }
-
   .timeline-item:nth-child(1) { animation-delay: 0.1s; }
   .timeline-item:nth-child(2) { animation-delay: 0.25s; }
   .timeline-item:nth-child(3) { animation-delay: 0.4s; }
 
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
   .timeline-dot {
     position: absolute;
-    left: -37px;
-    top: 8px;
-    width: 10px;
-    height: 10px;
+    left: -37px; top: 8px;
+    width: 10px; height: 10px;
     border-radius: 50%;
     background: var(--gold);
     border: 2px solid var(--cream);
@@ -313,7 +386,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .job-desc {
@@ -323,12 +396,9 @@
     margin-bottom: 20px;
     max-width: 760px;
   }
+  .job-desc strong { font-weight: 500; color: var(--ink); }
 
-  .pill-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+  .pill-list { display: flex; flex-wrap: wrap; gap: 8px; }
 
   .pill {
     background: var(--white);
@@ -340,14 +410,9 @@
     border-radius: 2px;
   }
 
-  /* Divider */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--rule);
-    margin: 0 60px;
-  }
+  .divider { border: none; border-top: 1px solid var(--rule); margin: 0 60px; }
 
-  /* ── SKILLS BAR ── */
+  /* ── SKILLS ── */
   .skills-section {
     padding: 80px 60px;
     max-width: 1200px;
@@ -381,11 +446,7 @@
     margin-bottom: 14px;
   }
 
-  .skill-card ul {
-    list-style: none;
-    padding: 0;
-  }
-
+  .skill-card ul { list-style: none; padding: 0; }
   .skill-card ul li {
     font-size: 14px;
     color: #3a3830;
@@ -393,111 +454,16 @@
     border-bottom: 1px solid var(--rule);
     font-weight: 400;
   }
-
   .skill-card ul li:last-child { border-bottom: none; }
-
-  /* ── HEADER / NAV ── */
-  .site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 60px;
-    height: 64px;
-    background: rgba(15,17,23,0.96);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(200,146,42,0.18);
-    transition: background 0.3s;
-  }
-
-  .header-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: 0.5px;
-    text-decoration: none;
-  }
-
-  .header-logo span {
-    color: var(--gold-light);
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 36px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    transition: color 0.2s;
-    position: relative;
-  }
-
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 1px;
-    background: var(--gold);
-    transition: width 0.25s ease;
-  }
-
-  .nav-links a:hover {
-    color: var(--gold-light);
-  }
-
-  .nav-links a:hover::after {
-    width: 100%;
-  }
-
-  .nav-cta {
-    font-size: 11px !important;
-    font-weight: 500 !important;
-    letter-spacing: 2px !important;
-    color: var(--gold-light) !important;
-    border: 1px solid rgba(200,146,42,0.5) !important;
-    padding: 7px 18px !important;
-    border-radius: 2px !important;
-    transition: background 0.2s, color 0.2s !important;
-  }
-
-  .nav-cta:hover {
-    background: var(--gold) !important;
-    color: var(--ink) !important;
-  }
-
-  .nav-cta::after { display: none !important; }
-
-  /* push body content below fixed header */
-  body { padding-top: 64px; }
 
   /* ── FOOTER ── */
   .site-footer {
     background: var(--ink);
     color: rgba(255,255,255,0.5);
     padding: 60px 60px 32px;
-    margin-top: 0;
   }
 
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
 
   .footer-top {
     display: grid;
@@ -516,7 +482,6 @@
     color: var(--white);
     margin-bottom: 12px;
   }
-
   .footer-brand span { color: var(--gold-light); }
 
   .footer-tagline {
@@ -526,20 +491,13 @@
     max-width: 360px;
   }
 
-  .footer-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: right;
-  }
-
+  .footer-contact { display: flex; flex-direction: column; gap: 10px; text-align: right; }
   .footer-contact a {
     font-size: 13px;
     color: rgba(255,255,255,0.45);
     text-decoration: none;
     transition: color 0.2s;
   }
-
   .footer-contact a:hover { color: var(--gold-light); }
 
   .footer-contact-label {
@@ -559,17 +517,9 @@
     gap: 12px;
   }
 
-  .footer-copy {
-    font-size: 12px;
-    color: rgba(255,255,255,0.25);
-  }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
 
-  .footer-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
+  .footer-pills { display: flex; flex-wrap: wrap; gap: 8px; }
   .footer-pill {
     font-size: 10px;
     font-weight: 500;
@@ -592,7 +542,7 @@
     .divider { margin: 0 24px; }
     .site-header { padding: 0 24px; }
     .nav-links { gap: 20px; }
-    .nav-links li:not(:last-child) { display: none; }
+    .nav-links li:not(.hire-me-wrap) { display: none; }
     .footer-top { grid-template-columns: 1fr; }
     .footer-contact { text-align: left; }
     .site-footer { padding: 48px 24px 28px; }
@@ -610,7 +560,19 @@
       <li><a href="#about">About</a></li>
       <li><a href="#career">Career</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="mailto:farooq244500@gmail.com" class="nav-cta">Hire Me</a></li>
+      <li class="hire-me-wrap">
+        <button class="nav-cta" onclick="toggleHireMe(event)">Hire Me ▾</button>
+        <div class="hire-dropdown" id="hireDropdown">
+          <a href="mailto:farooq244500@gmail.com" class="hire-option">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            Email Me
+          </a>
+          <a href="https://linkedin.com/in/farooqahmed24" target="_blank" class="hire-option">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </li>
     </ul>
   </nav>
 </header>
@@ -687,10 +649,7 @@
       <h3 class="job-company">Howdy Group</h3>
       <p class="job-role">Executive — Supply Chain &amp; Procurement</p>
       <p class="job-desc">
-        At Howdy Group, a multi-outlet food and hospitality organisation, I lead supply chain and procurement operations end-to-end. I oversee daily warehouse management across dry store, chiller, and freezer areas, enforcing food safety standards, temperature compliance, and FIFO protocols at every stage. I act as the key liaison between procurement, production units — covering meat, bakery, sauces, and vegetable processing — and outlet teams, ensuring zero disruption to service fulfilment.
-      </p>
-      <p class="job-desc">
-        On the analytical side, I design interactive Power BI dashboards and Excel-based reports that give leadership real-time visibility into stock levels, supplier performance, and cost trends. I am actively involved in <strong>GRIP ERP</strong> system development and integration, improving workflow automation and data accuracy across departments. I also implement cost-effective sourcing strategies and manage vendor relationships to drive consistent quality and competitive pricing.
+        Leading end-to-end supply chain and procurement for a multi-outlet food &amp; hospitality group — managing dry, chiller, and freezer warehouses with strict FIFO and food-safety compliance. Coordinating between procurement, production units (meat, bakery, sauces), and outlet teams while building <strong>Power BI dashboards</strong> and driving <strong>GRIP ERP</strong> integration for real-time operational visibility.
       </p>
       <div class="pill-list">
         <span class="pill">Warehouse Operations</span>
@@ -714,10 +673,7 @@
       <h3 class="job-company">Domino's Pizza Pakistan</h3>
       <p class="job-role">Officer — Warehouse &amp; Commissary (Supply Chain &amp; Logistics)</p>
       <p class="job-desc">
-        In this fast-paced quick-service restaurant environment, I managed the commissary warehouse serving the entire North Region store network. My responsibilities ranged from ensuring 100% accurate stock picking and timely dispatch to stores, to supervising inbound goods receiving, verifying supplier invoices across all branches, and posting transactions in <strong>SAP S/4HANA</strong>. I planned and optimised vehicle load schedules to maximise logistics efficiency and monitored chiller vehicle compliance before every dispatch run.
-      </p>
-      <p class="job-desc">
-        This role demanded precision and speed — a single inventory error could impact dozens of store outlets simultaneously. I maintained rigorous IRA (Inventory Record Accuracy) standards and handled full documentation workflows with Finance, ensuring end-to-end traceability and accountability.
+        Managed the North Region commissary warehouse — overseeing accurate stock picking, inbound receiving, and timely dispatch to all stores. Maintained rigorous IRA standards, processed supplier invoices in <strong>SAP S/4HANA</strong>, and optimised vehicle load schedules to ensure chiller-compliant, on-time deliveries across the branch network.
       </p>
       <div class="pill-list">
         <span class="pill">SAP S/4HANA</span>
@@ -740,10 +696,7 @@
       <h3 class="job-company">Imtiaz Super Market</h3>
       <p class="job-role">Officer — Warehouse Operations</p>
       <p class="job-desc">
-        Imtiaz Super Market is one of Pakistan's largest retail chains, and my role here gave me deep exposure to high-volume, multi-SKU retail warehouse management at scale. I maintained accurate stock levels across all warehouse sections, managed picking and dispatch operations to multiple business units, and handled vendor returns and replacements for damaged or non-conforming stock. I also drove daily IRA activities and managed fast-moving SKU fulfilment during peak buying cycles.
-      </p>
-      <p class="job-desc">
-        I leveraged <strong>SAP Business One</strong> and <strong>SAP S/4HANA</strong> extensively to create inventory transfer orders and generate operational reports, building the analytical foundation that has defined my career. This role sharpened my ability to manage large, complex inventory environments with precision and accountability.
+        Managed high-volume, multi-SKU warehouse operations at one of Pakistan's largest retail chains — handling stock control, picking, dispatch, and vendor returns across multiple business units. Used <strong>SAP Business One</strong> and <strong>SAP S/4HANA</strong> daily for inventory transfers, IRA tracking, and operational reporting.
       </p>
       <div class="pill-list">
         <span class="pill">SAP Business One</span>
@@ -840,6 +793,16 @@
     </div>
   </div>
 </footer>
+
+<script>
+  function toggleHireMe(e) {
+    e.stopPropagation();
+    document.getElementById('hireDropdown').classList.toggle('open');
+  }
+  document.addEventListener('click', function() {
+    document.getElementById('hireDropdown').classList.remove('open');
+  });
+</script>
 
 </body>
 </html>
